@@ -15,7 +15,7 @@ public class LoginTest {
         LoginPage loginPage = new LoginPage("375",faker.numerify("(##) ###-##-##"), faker.internet().password());
 
         assertAll(
-                "Grouped Assertions of User",
+                "Grouped Assertions of Login",
                 () -> assertEquals(200, loginPage.getStatusCode(), "StatusCode should be 200"),
                 () -> assertEquals(false, loginPage.getErrorText(), "Status in response should be false"),
                 () -> assertEquals(ExpectedMessages.INVALID_PHONE_OR_PASSWORD, loginPage.getContextErrorEmail(), "Text match")
