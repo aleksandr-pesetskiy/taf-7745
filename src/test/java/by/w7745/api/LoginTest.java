@@ -3,6 +3,7 @@ package by.w7745.api;
 import by.w7745.api.expectedMessages.ExpectedMessages;
 import by.w7745.api.loginForm.LoginPage;
 import com.github.javafaker.Faker;
+import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -16,7 +17,7 @@ public class LoginTest {
 
         assertAll(
                 "Grouped Assertions of Login",
-                () -> assertEquals(200, loginPage.getStatusCode(), "StatusCode should be 200"),
+                () -> assertEquals(HttpStatus.SC_OK, loginPage.getStatusCode(), "StatusCode should be 200"),
                 () -> assertEquals(false, loginPage.getErrorText(), "Status in response should be false"),
                 () -> assertEquals(ExpectedMessages.INVALID_PHONE_OR_PASSWORD, loginPage.getContextErrorEmail(), "Text match")
         );
